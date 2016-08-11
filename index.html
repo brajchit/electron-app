@@ -1,19 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
 
-  <script>
+<head>
+    <meta charset="UTF-8">
+    <title>My desktop app!</title>
+
+    <link rel="stylesheet" href="./css/screen.css" media="screen, projection" type="text/css" />
+    <link rel="stylesheet" href="./css/print.css" media="print" type="text/css" />
+    <link rel="stylesheet" href="./css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./css/styles.css" media="screen" title="no title" charset="utf-8">
+
+    <script src="./js/jquery-3.1.0.min.js" type="txt/javascript"></script>
+
+</head>
+
+<body style="-webkit-app-region: drag">
+    <!-- <h1>CSS & JQUERY Select Box<span>Without Plugin</span></h1> -->
+
+    <select id="mounth">
+        <option value="hide">-- Month --</option>
+        <option value="january" rel="icon-temperature">January</option>
+        <option value="february">February</option>
+        <option value="march">March</option>
+        <option value="april">April</option>
+        <option value="may">May</option>
+        <option value="june">June</option>
+        <option value="july">July</option>
+        <option value="august">August</option>
+        <option value="september">September</option>
+        <option value="october">October</option>
+        <option value="november">November</option>
+        <option value="december">December</option>
+    </select>
+    <h4>estoy abajo</h4>
+    <select id="year">
+        <option value="hide">-- Year --</option>
+        <option value="2010">2010</option>
+        <option value="2011">2011</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+    </select>
+
+
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+</body>
+
+<script>
     // You can also require other files to run in this process
     require('./renderer.js')
-  </script>
+
+    // Insert this line above script imports
+    if (typeof module === 'object') {
+        window.module = module;
+        module = undefined;
+    }
+</script>
+
+<!-- normal script imports etc  -->
+<script src="./js/jquery-3.1.0.min.js"></script>
+<script src="./js/main.js"></script>
+
+<!-- Insert this line after script imports -->
+<script>
+    if (window.module) module = window.module;
+</script>
+
 </html>
