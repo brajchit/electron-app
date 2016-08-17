@@ -18,7 +18,8 @@ $body-margin: 40px;
 body {
     font-family: Lato, Arial;
     color: $select-color;
-    padding: 20px;
+    padding: 20px 40px;
+    padding-top: 5px;
     background-color: $background;
 }
 h1 {
@@ -131,7 +132,6 @@ p {
     border: none;
     outline: none;
     background-color: $select-background;
-    // padding-right: 4px;
     padding: 8px 15px;
 }
 
@@ -147,10 +147,49 @@ p {
 }
 
 .btn.btn-default{
-    width: $select-width;
+    width: 100%;
 }
 
 .content{
-    padding: 3em;
-    
+    padding: 0;
+    padding-top: 2em;
+    padding-left: 16%;
+}
+
+.menu{
+    li{
+        text-align: center;
+        a{
+            display: inline-block;
+            font-size: 22px;
+            padding: 5px 10px;
+            margin: 0 5px;
+            // background-color: darken($select-background, 2);
+            @include transition(all 0.2s ease-in);
+            &:hover {
+                color: darken($select-background, 35);
+            }
+        }
+    }
+}
+.menu{
+    li.active{
+        border-bottom: 2px solid #fff;
+    }
+}
+.menu .col-xs-4{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: $select-width;
+    height: auto;
+}
+.flex-item {
+    // background-color: rgb(161, 152, 34);
+    width: $select-width/2;
+    margin: auto;
 }

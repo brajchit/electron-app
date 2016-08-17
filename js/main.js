@@ -1,23 +1,34 @@
 
 function fillOptions($selectTag, data) {
-    $(data).each(function(index, val) {
+    $(data).each(function(index, obj) {
         $('<option/>',{
-            value: val,
-            text : val
+            value: obj.precio,
+            text : obj.nombre
         }).appendTo($selectTag);
     });
 }
 
 $(document).ready(function() {
-
-    var equipos      = ["LASER", "OFFSET", "DUPLICADORA", "FOTOCOPIA"],
-        equiposVals  = [1.5, 2, 2.5, 3],
-        sustrato = ["BOND", "CANVAS", "PVC", "ADESIVOS"],
-        sustratoVals = [.30, .25, .40, .55],
-        arte     = ["AFICHE", "VOLANTE", "CARNE", "LIBRO", "FOLLETO", "TARJETA"],
-        arteVals = [.30, .25, .40, .55, .88, .35],
-        iva      = ["12%", "14%"],
-        ivaVals  = [.12, .14];
+    var equipos = [
+        {nombre:"Lazer",       precio:.10},
+        {nombre:"OFFSET",      precio:.15},
+        {nombre:"DUPLICADORA", precio:.20},
+        {nombre:"FOTOCOPIA",   precio:.25}
+    ],
+    sustratos = [
+        {nombre:"BOND",      precio:.20},
+        {nombre:"CANVAS",    precio:.25},
+        {nombre:"PVC",       precio:.30},
+        {nombre:"ADESIVOS",  precio:.35}
+    ],
+    artes = [
+        {nombre:"AFICHE",   precio:.30},
+        {nombre:"VOLANTE",  precio:.35},
+        {nombre:"CARNE",    precio:.40},
+        {nombre:"TARJETA",  precio:.45},
+        {nombre:"LIBRO",    precio:.55},
+        {nombre:"FOLLETO",  precio:.55}
+    ];
 
     var $equiposSelects = $("select#equipo");
     var $sustratoSelects = $("select#sustrato");
@@ -25,9 +36,17 @@ $(document).ready(function() {
     var $ivaSelects = $("select#iva");
 
     fillOptions($equiposSelects, equipos);
-    fillOptions($sustratoSelects, sustrato);
-    fillOptions($arteSelects, arte);
-    fillOptions($ivaSelects, iva);
+    fillOptions($sustratoSelects, sustratos);
+    fillOptions($arteSelects, artes);
+    // fillOptions($ivaSelects, iva);
+
+    $('select').each(function() {
+        $(this).on('change', function(e) {
+            e.preventDefault();
+            var $labelValue = $(this).siblings('label');
+            $labelValue.text($(this).val());
+        });
+    });
 
     $('select').each(function() {
         var $this = $(this),
@@ -42,7 +61,8 @@ $(document).ready(function() {
         $styledSelect.text($this.children('option').eq(0).text());
 
         var $list = $('<ul />', {
-            'class': 'select-options'
+            'class': 'select-options',
+            'id'   : $this.attr('id')
         }).insertAfter($styledSelect);
 
         for (var i = 0; i < numberOfOptions; i++) {
@@ -79,22 +99,22 @@ $(document).ready(function() {
             $styledSelect.text($(this).text()).removeClass('active');
             $this.val($(this).attr('rel'));
             $list.hide();
-            console.log($this.val());
+            var precio = $(this).attr('rel');
+            $this.siblings('label').text(precio);
 
             // cuando es LIBRO o FOLLETO
-            if ($(this).text() == "LIBRO" || $(this).text() == "FOLLETO" ) {
+            if ($(this).parent().attr('id') == "arte" && $(this).text() == "LIBRO" || $(this).text() == "FOLLETO" ) {
                 var warpArte = $('select#arte').parent();
                 $('body #npag, h2.LibroFollleto, select#color').remove();
-                warpArte.after('<h2 class="LibroFollleto">N. PAGINAS</h2><div class="select" id="npag"><input class="input-value" type="number" name="cantidad" min="1" step="1"></div>');
-                var $colorSelector = $('<select/>',{
-                    id: 'color'
-                }).append($('<option/>',{value:'hide'}).text("-- Select --"))
-                  .append($('<option/>',{value:'hide'}).text("COLOR"))
-                  .append($('<option/>',{value:'hide'}).text("BN"));
-                // warpArte.after($colorSelector);
+                warpArte.after('<h2 class="LibroFollleto">N. PAGINAS</h2>');
+                var divLibroFolleto = $('<div class="select" id="npag"></div>');
+                var inputNpag = $('<input class="input-value" type="number" min="1" step="1">');
+                divLibroFolleto.append(inputNpag)
+                $('.LibroFollleto').after(divLibroFolleto);
 
-            } else {
-                $('body #npag, h2.LibroFollleto, select#color').remove()
+
+            } else if ($(this).parent().attr('id') == "arte") {
+                $('body #npag, h2.LibroFollleto').remove()
             }
         });
 

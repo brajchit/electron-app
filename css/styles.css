@@ -2,29 +2,30 @@
 body {
   font-family: Lato, Arial;
   color: #fff;
-  padding: 20px;
+  padding: 20px 40px;
+  padding-top: 5px;
   background-color: #7dd7e4;
 }
 
-/* line 24, ../sass/styles.scss */
+/* line 25, ../sass/styles.scss */
 h1 {
   font-weight: normal;
   font-size: 40px;
   font-weight: normal;
   text-transform: uppercase;
 }
-/* line 29, ../sass/styles.scss */
+/* line 30, ../sass/styles.scss */
 h1 span {
   font-size: 13px;
   display: block;
   padding-left: 4px;
 }
 
-/* line 36, ../sass/styles.scss */
+/* line 37, ../sass/styles.scss */
 p {
   margin-top: 200px;
 }
-/* line 38, ../sass/styles.scss */
+/* line 39, ../sass/styles.scss */
 p a {
   text-transform: uppercase;
   text-decoration: none;
@@ -38,19 +39,19 @@ p a {
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
-/* line 47, ../sass/styles.scss */
+/* line 48, ../sass/styles.scss */
 p a:hover {
   background-color: #209dac;
 }
 
-/* line 52, ../sass/styles.scss */
+/* line 53, ../sass/styles.scss */
 .select-hidden {
   display: none;
   visibility: hidden;
   padding-right: 10px;
 }
 
-/* line 57, ../sass/styles.scss */
+/* line 58, ../sass/styles.scss */
 .select {
   margin-bottom: 16px;
   margin-top: 5px;
@@ -63,7 +64,7 @@ p a:hover {
   height: 40px;
 }
 
-/* line 69, ../sass/styles.scss */
+/* line 70, ../sass/styles.scss */
 .select-styled {
   position: absolute;
   top: 0;
@@ -77,7 +78,7 @@ p a:hover {
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
-/* line 78, ../sass/styles.scss */
+/* line 79, ../sass/styles.scss */
 .select-styled:after {
   content: "";
   width: 0;
@@ -88,21 +89,21 @@ p a:hover {
   top: 16px;
   right: 10px;
 }
-/* line 88, ../sass/styles.scss */
+/* line 89, ../sass/styles.scss */
 .select-styled:hover {
   background-color: #22a9b9;
 }
-/* line 91, ../sass/styles.scss */
+/* line 92, ../sass/styles.scss */
 .select-styled:active, .select-styled.active {
   background-color: #209dac;
 }
-/* line 93, ../sass/styles.scss */
+/* line 94, ../sass/styles.scss */
 .select-styled:active:after, .select-styled.active:after {
   top: 9px;
   border-color: transparent transparent #fff transparent;
 }
 
-/* line 99, ../sass/styles.scss */
+/* line 100, ../sass/styles.scss */
 .select-options {
   display: none;
   position: absolute;
@@ -115,7 +116,7 @@ p a:hover {
   list-style: none;
   background-color: #209dac;
 }
-/* line 110, ../sass/styles.scss */
+/* line 111, ../sass/styles.scss */
 .select-options li {
   margin: 0;
   padding: 12px 0;
@@ -126,17 +127,17 @@ p a:hover {
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
 }
-/* line 116, ../sass/styles.scss */
+/* line 117, ../sass/styles.scss */
 .select-options li:hover {
   color: #24b1c2;
   background: #fff;
 }
-/* line 120, ../sass/styles.scss */
+/* line 121, ../sass/styles.scss */
 .select-options li[rel="hide"] {
   display: none;
 }
 
-/* line 126, ../sass/styles.scss */
+/* line 127, ../sass/styles.scss */
 .input-value {
   width: 220px;
   height: 40px;
@@ -162,10 +163,57 @@ p a:hover {
 
 /* line 149, ../sass/styles.scss */
 .btn.btn-default {
-  width: 220px;
+  width: 100%;
 }
 
 /* line 153, ../sass/styles.scss */
 .content {
-  padding: 3em;
+  padding: 0;
+  padding-top: 2em;
+  padding-left: 16%;
+}
+
+/* line 160, ../sass/styles.scss */
+.menu li {
+  text-align: center;
+}
+/* line 162, ../sass/styles.scss */
+.menu li a {
+  display: inline-block;
+  font-size: 22px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+/* line 169, ../sass/styles.scss */
+.menu li a:hover {
+  color: #08282b;
+}
+
+/* line 176, ../sass/styles.scss */
+.menu li.active {
+  border-bottom: 2px solid #fff;
+}
+
+/* line 180, ../sass/styles.scss */
+.menu .col-xs-4 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 185, ../sass/styles.scss */
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+  width: 220px;
+  height: auto;
+}
+
+/* line 191, ../sass/styles.scss */
+.flex-item {
+  width: 110px;
+  margin: auto;
 }
