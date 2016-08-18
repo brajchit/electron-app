@@ -124,15 +124,27 @@ p {
     }
 }
 
+.input-grup{
+    display: block;
+    margin-bottom: 15px;
+    margin-top: 4px;
+}
+
 .input-value{
-    width: $select-width;
+    width: $select-width/2.5;
     height: $select-height;
+    display: inline-block;
     color: $select-color;
     font-size: 16px;
     border: none;
     outline: none;
     background-color: $select-background;
     padding: 8px 15px;
+    margin-left: -4px;
+}
+.label-input{
+    display: inline-block;
+    width: $select-width - ($select-width/2.5);
 }
 
 .label-values{

@@ -42,8 +42,9 @@
             <option value="hide">-- Select --</option>
         </select>
 
-        <h2>CANTIDAD</h2>
-        <div class="select">
+        <!-- CANTIDAD -->
+        <div class="input-grup" id="input-cantidad">
+            <label for="cantidad" class="label-input">CANTIDAD</label>
             <input id="cantidad" class="input-value" type="number" name="cantidad" value="1" min="1" step="1">
         </div>
 
@@ -52,6 +53,9 @@
             <option value="hide">-- Select --</option>
         </select>
 
+        <div class="input-grup" id="input-nPages" style="display:none">
+        </div>
+
         <h2>IVA</h2>
         <div class="flex-container">
             <div class="flex-item">
@@ -59,13 +63,13 @@
                     <div class="flex-item-in">
                         <div class="radio">
                             <label>
-                                <input type="radio" name="opIva" id="optionsRadios1" value=".14" checked>
+                                <input type="radio" name="opIva" id="optIva1" value=".14" checked>
                                 14%
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="opIva" id="optionsRadios2" value=".12">
+                                <input type="radio" name="opIva" id="optIva2" value=".12">
                                 12%
                             </label>
                         </div>
@@ -79,15 +83,28 @@
                 <label for="subtotal" class="label-result"id="subtotal">00.00</label> SubTotal
                 <label for="subtotal" class="label-result"id="iva">00.00</label> IVA
                 <label for="subtotal" class="label-result"id="total">00.00</label> Total
-                <!-- <label for="subtotal" class="label-values">00.00</label> -->
             </div>
         </div>
     </section>
     <!-- custom content section -->
     <section class="content" id="setup-content">
-        <h2 >Iva</h2>
-        <div class="select">
-            <input class="input-value" type="number" min="1" step="1">
+        <div class="input-grup">
+            <label class="label-input" for="">Iva por Defecto </label>
+            <input class="input-value" value="14" type="text" min="1" step="1">
+        </div>
+        <div class="input-grup">
+            <label class="label-input" for="">Iva </label>
+            <input class="input-value" value="12" type="text" min="1" step="1">
+            <input class="input-value" value="14" type="text" min="1" step="1">
+        </div>
+        <div class="input-grup">
+            <label class="label-input" for="">Color por Defecto </label>
+            <input class="input-value" value="B/N" type="text" min="1" step="1">
+        </div>
+        <div class="input-grup">
+            <label class="label-input" for="">Colores </label>
+            <input class="input-value" value="B/N" type="text" min="1" step="1">
+            <input class="input-value" value="Color" type="text" min="1" step="1">
         </div>
     </section><!-- end custom content section -->
 

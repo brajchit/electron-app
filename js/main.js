@@ -12,6 +12,7 @@ function fillOptions($selectTag, data) {
 
 $(document).ready(function() {
 
+
     // Read
     storage.get('foobar', function(error, data) {
         console.log(data);
@@ -28,11 +29,24 @@ $(document).ready(function() {
             var iva = parseFloat(radio.val()).toFixed(2);
             console.log(iva);
         }
+        if ($('#input-nPages').css('display') != "none") {
+            var intNpages  = parseInt($('#nPages').val());
+            var colorRadio = $("input[type='radio'][name='opColor']:checked");
+            if (colorRadio.length > 0) {
+                var floatColor = parseFloat(colorRadio.val());
+                console.log(floatColor);
+            }
+            // Libro-Folleto formula
+            var subt = intNpages + floatColor + equi;
+            console.log(intNpages);
+            console.log(subt);
+        } else {
+            var subt = equi + sust + arte + cant;
+        }
 
-        var subt = equi + sust + arte + cant;
         subt2 = parseFloat(subt).toFixed(2);
         if ($.isNumeric( subt ) && cant>0) {
-            console.log(subt);
+            // console.log(subt);
             $('#subtotal').text(subt2);
             var iva2 = parseFloat(subt*iva).toFixed(2);
             $('#iva').text(iva2);
@@ -152,17 +166,30 @@ $(document).ready(function() {
 
             // cuando es LIBRO o FOLLETO
             if ($(this).parent().attr('id') == "arte" && $(this).text() == "LIBRO" || $(this).text() == "FOLLETO" ) {
-                var warpArte = $('select#arte').parent();
-                $('body #npag, h2.LibroFollleto, select#color').remove();
-                warpArte.after('<h2 class="LibroFollleto">N. PAGINAS</h2>');
-                var divLibroFolleto = $('<div class="select" id="npag"></div>');
-                var inputNpag = $('<input class="input-value" type="number" value="1" min="1" step="1">');
-                divLibroFolleto.append(inputNpag)
-                $('.LibroFollleto').after(divLibroFolleto);
+                $('#home-content').css('padding-top', '2em');
+                var $labelNPages = $('<label for="nPages" class="label-input">N. PAGINAS</label>');
+                var $inputNPages = $('<input id="nPages" class="input-value" type="number" name="nPages" value="1" min="1" step="1">');
+                $inputNPages.css('margin-left', '0');
 
+                var $colorOps = `<div class="radio">
+                            <label>
+                                <input type="radio" name="opColor" id="optionsColor1" value=".4" checked>
+                                B/N
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="opColor" id="optionsColor2" value=".2">
+                                Color
+                            </label>
+                        </div>`;
+                $("#input-nPages").empty().append($colorOps, $labelNPages, $inputNPages);
+                $("#input-nPages").show();
+                //
 
             } else if ($(this).parent().attr('id') == "arte") {
-                $('body #npag, h2.LibroFollleto').remove()
+                $('#home-content').css('padding-top', '3em');
+                $("#input-nPages").empty().hide();
             }
         });
 

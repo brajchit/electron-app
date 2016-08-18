@@ -138,18 +138,33 @@ p a:hover {
 }
 
 /* line 127, ../sass/styles.scss */
+.input-grup {
+  display: block;
+  margin-bottom: 15px;
+  margin-top: 4px;
+}
+
+/* line 133, ../sass/styles.scss */
 .input-value {
-  width: 220px;
+  width: 88px;
   height: 35px;
+  display: inline-block;
   color: #fff;
   font-size: 16px;
   border: none;
   outline: none;
   background-color: #24b1c2;
   padding: 8px 15px;
+  margin-left: -4px;
 }
 
-/* line 138, ../sass/styles.scss */
+/* line 145, ../sass/styles.scss */
+.label-input {
+  display: inline-block;
+  width: 132px;
+}
+
+/* line 150, ../sass/styles.scss */
 .label-values {
   background: #24b1c2;
   width: 88px;
@@ -161,7 +176,7 @@ p a:hover {
   text-align: right;
 }
 
-/* line 148, ../sass/styles.scss */
+/* line 160, ../sass/styles.scss */
 .label-result {
   background: #24b1c2;
   width: 88px;
@@ -173,7 +188,7 @@ p a:hover {
   vertical-align: middle;
 }
 
-/* line 160, ../sass/styles.scss */
+/* line 172, ../sass/styles.scss */
 .btn.btn-default {
   width: 100%;
   border-radius: 0;
@@ -185,33 +200,33 @@ p a:hover {
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
 }
-/* line 167, ../sass/styles.scss */
+/* line 179, ../sass/styles.scss */
 .btn.btn-default:hover {
   color: #14636c;
   border: 1px solid #209dac;
 }
-/* line 171, ../sass/styles.scss */
+/* line 183, ../sass/styles.scss */
 .btn.btn-default:focus {
   outline: none;
 }
-/* line 174, ../sass/styles.scss */
+/* line 186, ../sass/styles.scss */
 .btn.btn-default:active {
   border: 1px solid #22a9b9;
   background-color: #75d4e2;
 }
 
-/* line 180, ../sass/styles.scss */
+/* line 192, ../sass/styles.scss */
 .content {
   padding: 0;
   padding-top: 3em;
   padding-left: 16%;
 }
 
-/* line 187, ../sass/styles.scss */
+/* line 199, ../sass/styles.scss */
 .menu li {
   text-align: center;
 }
-/* line 189, ../sass/styles.scss */
+/* line 201, ../sass/styles.scss */
 .menu li a {
   display: inline-block;
   font-size: 22px;
@@ -222,23 +237,23 @@ p a:hover {
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
-/* line 196, ../sass/styles.scss */
+/* line 208, ../sass/styles.scss */
 .menu li a:hover {
   color: #08282b;
 }
 
-/* line 203, ../sass/styles.scss */
+/* line 215, ../sass/styles.scss */
 .menu li.active {
   border-bottom: 2px solid #fff;
 }
 
-/* line 207, ../sass/styles.scss */
+/* line 219, ../sass/styles.scss */
 .menu .col-xs-4 {
   padding-left: 0;
   padding-right: 0;
 }
 
-/* line 212, ../sass/styles.scss */
+/* line 224, ../sass/styles.scss */
 .flex-container {
   display: -webkit-flex;
   display: flex;
@@ -246,7 +261,7 @@ p a:hover {
   height: auto;
 }
 
-/* line 219, ../sass/styles.scss */
+/* line 231, ../sass/styles.scss */
 .flex-container-in {
   display: -webkit-flex;
   display: flex;
@@ -254,12 +269,12 @@ p a:hover {
   height: auto;
 }
 
-/* line 227, ../sass/styles.scss */
+/* line 239, ../sass/styles.scss */
 .flex-item {
   width: 220px;
 }
 
-/* line 232, ../sass/styles.scss */
+/* line 244, ../sass/styles.scss */
 .flex-item-in {
   width: 146.66667px;
   margin: auto;
