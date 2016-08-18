@@ -1,3 +1,5 @@
+const storage = require('electron-json-storage');
+
 
 function fillOptions($selectTag, data) {
     $(data).each(function(index, obj) {
@@ -9,6 +11,59 @@ function fillOptions($selectTag, data) {
 }
 
 $(document).ready(function() {
+
+    // Read
+    storage.get('foobar', function(error, data) {
+        console.log(data);
+    });
+
+    //Calcule
+    $('#calcule').click(function(event) {
+        var equi = parseFloat($('#equipo').val());
+        var sust = parseFloat($('#sustrato').val());
+        var cant = parseInt($('#cantidad').val());
+        var arte = parseFloat($('#arte').val());
+        var radio = $("input[type='radio'][name='opIva']:checked");
+        if (radio.length > 0) {
+            var iva = parseFloat(radio.val()).toFixed(2);
+            console.log(iva);
+        }
+
+        var subt = equi + sust + arte + cant;
+        subt2 = parseFloat(subt).toFixed(2);
+        if ($.isNumeric( subt ) && cant>0) {
+            console.log(subt);
+            $('#subtotal').text(subt2);
+            var iva2 = parseFloat(subt*iva).toFixed(2);
+            $('#iva').text(iva2);
+            var total = parseFloat((subt*iva) + subt).toFixed(2);
+            console.log((subt*iva) + subt);
+            $('#total').text(total);
+        }else {
+            $('#subtotal').text("00.00");
+            $('#iva').text("00.00");
+            $('#total').text("00.00");
+        }
+    });
+
+    //menuvar
+    $('#setup-content').hide();
+    $('#setup').on('click', function(event) {
+        event.preventDefault();
+        $('.menu li').removeClass('active');
+        $(this).parent().toggleClass('active');
+        $('#home-content').hide();
+        $('#setup-content').show();
+    });
+    $('#home').on('click', function(event) {
+        event.preventDefault();
+        $('.menu li').removeClass('active');
+        $(this).parent().toggleClass('active');
+        $('#setup-content').hide();
+        $('#home-content').show();
+    });
+
+    //data
     var equipos = [
         {nombre:"Lazer",       precio:.10},
         {nombre:"OFFSET",      precio:.15},
@@ -30,6 +85,7 @@ $(document).ready(function() {
         {nombre:"FOLLETO",  precio:.55}
     ];
 
+    //Load selectors
     var $equiposSelects = $("select#equipo");
     var $sustratoSelects = $("select#sustrato");
     var $arteSelects = $("select#arte");
@@ -38,16 +94,8 @@ $(document).ready(function() {
     fillOptions($equiposSelects, equipos);
     fillOptions($sustratoSelects, sustratos);
     fillOptions($arteSelects, artes);
-    // fillOptions($ivaSelects, iva);
 
-    $('select').each(function() {
-        $(this).on('change', function(e) {
-            e.preventDefault();
-            var $labelValue = $(this).siblings('label');
-            $labelValue.text($(this).val());
-        });
-    });
-
+    //Set styles selectors
     $('select').each(function() {
         var $this = $(this),
             numberOfOptions = $(this).children('option').length;
@@ -66,7 +114,7 @@ $(document).ready(function() {
         }).insertAfter($styledSelect);
 
         for (var i = 0; i < numberOfOptions; i++) {
-            $('<li />', {
+            $('<li/>', {
                 text: $this.children('option').eq(i).text(),
                 rel: $this.children('option').eq(i).val()
             }).appendTo($list);
@@ -82,7 +130,6 @@ $(document).ready(function() {
                 $this.val($(this).attr('rel'));
 
                 $list.hide();
-                //console.log($this.val());
 
             } else {
                 e.stopPropagation();
@@ -99,6 +146,7 @@ $(document).ready(function() {
             $styledSelect.text($(this).text()).removeClass('active');
             $this.val($(this).attr('rel'));
             $list.hide();
+            //set label values
             var precio = $(this).attr('rel');
             $this.siblings('label').text(precio);
 
@@ -108,7 +156,7 @@ $(document).ready(function() {
                 $('body #npag, h2.LibroFollleto, select#color').remove();
                 warpArte.after('<h2 class="LibroFollleto">N. PAGINAS</h2>');
                 var divLibroFolleto = $('<div class="select" id="npag"></div>');
-                var inputNpag = $('<input class="input-value" type="number" min="1" step="1">');
+                var inputNpag = $('<input class="input-value" type="number" value="1" min="1" step="1">');
                 divLibroFolleto.append(inputNpag)
                 $('.LibroFollleto').after(divLibroFolleto);
 

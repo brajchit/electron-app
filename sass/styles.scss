@@ -13,7 +13,7 @@ $select-background: #24b1c2;
 // $select-background: #f5f5f5;
 
 $select-width: 220px;
-$select-height: 40px;
+$select-height: 35px;
 $body-margin: 40px;
 body {
     font-family: Lato, Arial;
@@ -40,7 +40,7 @@ p {
         text-transform: uppercase;
         text-decoration: none;
         display: inline-block;
-        color: #fff;
+        color: $select-color;
         padding: 5px 10px;
         margin: 0 5px;
         background-color: darken($select-background, 2);
@@ -137,22 +137,49 @@ p {
 
 .label-values{
     background: $select-background;
-    width: $select-width/3;
+    width: $select-width/2.5;
     height: $select-height;
     display: inline-block;
     position: absolute;
     left: 250px;
     padding: 8px 15px;
-    text-align: center;
+    text-align: right;
 }
+.label-result{
+    background: $select-background;
+    width: $select-width/2.5;
+    text-align: right;
+    height: $select-height/1.5;
+    margin-bottom: 2px;
+    margin-left: 30px;
+    padding: 2px 10px;
+    vertical-align: middle;
+}
+
 
 .btn.btn-default{
     width: 100%;
+    border-radius: 0;
+    background-color: $select-color;
+    border: 1px solid $select-color;
+    color: darken($select-background, 5);
+    @include transition(all 0.15s ease-in);
+    &:hover{
+        color: darken($select-background, 20);
+        border: 1px solid darken($select-background, 5);
+    }
+    &:focus{
+        outline: none;
+    }
+    &:active{
+        border: 1px solid darken($select-background, 2);
+        background-color: darken($background, 2);
+    }
 }
 
 .content{
     padding: 0;
-    padding-top: 2em;
+    padding-top: 3em;
     padding-left: 16%;
 }
 
@@ -174,7 +201,7 @@ p {
 }
 .menu{
     li.active{
-        border-bottom: 2px solid #fff;
+        border-bottom: 2px solid $select-color;
     }
 }
 .menu .col-xs-4{
@@ -185,11 +212,25 @@ p {
 .flex-container {
     display: -webkit-flex;
     display: flex;
+    width: $select-width*2;
+    height: auto;
+    // background-color: #3d82e9;
+}
+.flex-container-in {
+    display: -webkit-flex;
+    display: flex;
     width: $select-width;
     height: auto;
+    // background-color: #22a13e;
 }
+
 .flex-item {
-    // background-color: rgb(161, 152, 34);
-    width: $select-width/2;
+    // background-color: #a19822;
+    width: $select-width;
+    // margin: auto;
+}
+.flex-item-in {
+    // background-color: #a19822;
+    width: $select-width/1.5;
     margin: auto;
 }

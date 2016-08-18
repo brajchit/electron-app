@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>My desktop app!</title>
+    <title>App Espol</title>
 
     <link rel="stylesheet" href="./css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="./css/screen.css" media="screen, projection" type="text/css" />
@@ -19,19 +19,19 @@
             <ul class="menu">
                 <div class="row">
                     <div class="col-xs-4">
-                        <li class="active"><a href="#"><i class="fa fa-desktop" aria-hidden="true"></i></a></li>
+                        <li class="active"><a href="#" id="home"><i class="fa fa-desktop" aria-hidden="true"></i></a></li>
                     </div>
                     <div class="col-xs-4">
                         <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i></a></li>
                     </div>
                     <div class="col-xs-4">
-                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i></a></li>
+                        <li><a href="#" id="setup"><i class="fa fa-cog" aria-hidden="true"></i></a></li>
                     </div>
                 </div>
             </ul>
         </nav>
     </div>
-    <section class="content">
+    <section class="content" id="home-content">
         <h2 id="eq">EQUIPO</h2>
         <select id="equipo" name="">
             <option value="hide">-- Select --</option>
@@ -44,7 +44,7 @@
 
         <h2>CANTIDAD</h2>
         <div class="select">
-            <input class="input-value" type="number" name="cantidad" value="" min="1" step="1">
+            <input id="cantidad" class="input-value" type="number" name="cantidad" value="1" min="1" step="1">
         </div>
 
         <h2>ARTE</h2>
@@ -55,25 +55,41 @@
         <h2>IVA</h2>
         <div class="flex-container">
             <div class="flex-item">
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="opIva" id="optionsRadios1" value="option1" checked>
-                        14%
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="opIva" id="optionsRadios2" value="option2">
-                        12%
-                    </label>
+                <div class="flex-container-in">
+                    <div class="flex-item-in">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="opIva" id="optionsRadios1" value=".14" checked>
+                                14%
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="opIva" id="optionsRadios2" value=".12">
+                                12%
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex-item-in">
+                        <button id="calcule" class="btn btn-default" type="button" name="button">CALCULAR</button>
+                    </div>
                 </div>
             </div>
             <div class="flex-item">
-                <button class="btn btn-default" type="button" name="button">Calcular</button>
+                <label for="subtotal" class="label-result"id="subtotal">00.00</label> SubTotal
+                <label for="subtotal" class="label-result"id="iva">00.00</label> IVA
+                <label for="subtotal" class="label-result"id="total">00.00</label> Total
+                <!-- <label for="subtotal" class="label-values">00.00</label> -->
             </div>
         </div>
-        <br>
     </section>
+    <!-- custom content section -->
+    <section class="content" id="setup-content">
+        <h2 >Iva</h2>
+        <div class="select">
+            <input class="input-value" type="number" min="1" step="1">
+        </div>
+    </section><!-- end custom content section -->
 
     <!-- All of the Node.js APIs are available in this renderer process. -->
 </body>
