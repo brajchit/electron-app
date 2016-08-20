@@ -1,3 +1,5 @@
+// imprenta espol
+
 const storage = require('electron-json-storage');
 
 
@@ -30,15 +32,17 @@ $(document).ready(function() {
             console.log(iva);
         }
         if ($('#input-nPages').css('display') != "none") {
-            var intNpages  = parseInt($('#nPages').val());
-            var colorRadio = $("input[type='radio'][name='opColor']:checked");
-            if (colorRadio.length > 0) {
-                var floatColor = parseFloat(colorRadio.val());
-                console.log(floatColor);
-            }
+            var intNpagesBN  = parseInt($('#nPagesBN').val());
+            var inputNPagesColor  = parseInt($('#nPagesColor').val());
+            // var colorRadio = $("input[type='radio'][name='opColor']:checked");
+            // if (colorRadio.length > 0) {
+            //     var floatColor = parseFloat(colorRadio.val());
+            //     console.log(floatColor);
+            // }
             // Libro-Folleto formula
-            var subt = intNpages + floatColor + equi;
-            console.log(intNpages);
+            // var subt = intNpagesBN + floatColor + equi;
+            var subt = intNpagesBN + inputNPagesColor;
+            console.log(intNpagesBN);
             console.log(subt);
         } else {
             var subt = equi + sust + arte + cant;
@@ -85,11 +89,18 @@ $(document).ready(function() {
         {nombre:"FOTOCOPIA",   precio:.25}
     ],
     sustratos = [
-        {nombre:"BOND",      precio:.20},
+        {nombre:"BOND 75g",      precio: 0.009},
+        {nombre:"BOND 90g",      precio: 0.012},
+        {nombre:"BOND 120g",      precio: 0.018},
         {nombre:"CANVAS",    precio:.25},
         {nombre:"PVC",       precio:.30},
         {nombre:"ADESIVOS",  precio:.35}
     ],
+    tama = [
+        {nombre:"A3",   precio:.30},
+        {nombre:"A4",   precio:.30},
+        {nombre:"A5",   precio:.30},
+    ];
     artes = [
         {nombre:"AFICHE",   precio:.30},
         {nombre:"VOLANTE",  precio:.35},
@@ -167,9 +178,12 @@ $(document).ready(function() {
             // cuando es LIBRO o FOLLETO
             if ($(this).parent().attr('id') == "arte" && $(this).text() == "LIBRO" || $(this).text() == "FOLLETO" ) {
                 $('#home-content').css('padding-top', '2em');
-                var $labelNPages = $('<label for="nPages" class="label-input">N. PAGINAS</label>');
-                var $inputNPages = $('<input id="nPages" class="input-value" type="number" name="nPages" value="1" min="1" step="1">');
-                $inputNPages.css('margin-left', '0');
+                var $labelNPagesBN = $('<label for="nPages" class="label-input">N. PAGINAS BN</label>');
+                var $inputNPagesBN = $('<input id="nPagesBN" class="input-value" type="number" name="nPages" value="1" min="1" step="1">');
+                var $labelNPagesColor = $('<label for="nPages" class="label-input">N. PAGINAS COLOR</label>');
+                var $inputNPagesColor = $('<input id="nPagesColor" class="input-value" type="number" name="nPages" value="1" min="1" step="1">');
+                $inputNPagesBN.css('margin-left', '0');
+                $inputNPagesColor.css('margin-left', '0');
 
                 var $colorOps = `<div class="radio">
                             <label>
@@ -183,7 +197,7 @@ $(document).ready(function() {
                                 Color
                             </label>
                         </div>`;
-                $("#input-nPages").empty().append($colorOps, $labelNPages, $inputNPages);
+                $("#input-nPages").empty().append($labelNPagesBN, $inputNPagesBN,$('<br>'), $labelNPagesColor, $inputNPagesColor);
                 $("#input-nPages").show();
                 //
 
