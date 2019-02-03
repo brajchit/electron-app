@@ -83,40 +83,94 @@ $(document).ready(function() {
 
     //data
     var equipos = [
-        {nombre:"Lazer",       precio:.10},
-        {nombre:"OFFSET",      precio:.15},
-        {nombre:"DUPLICADORA", precio:.20},
-        {nombre:"FOTOCOPIA",   precio:.25}
+        {nombre:"Láser",       precio:.10},
+        {nombre:"Offset",      precio:.15},
+        {nombre:"Duplicadora", precio:.20},
+        {nombre:"Fotocopiadora",   precio:.25}
+    ],
+    color = [
+        {nombre:"Full Color", precio:00},
+        {nombre:"Blanco y Negro", precio:00}
+    ],
+    tiroRetiro = [
+        {nombre:"Tiro", precio:00},
+        {nombre:"Tiro y Retiro", precio:00}
     ],
     sustratos = [
-        {nombre:"BOND 75g",      precio: 0.009},
-        {nombre:"BOND 90g",      precio: 0.012},
-        {nombre:"BOND 120g",      precio: 0.018},
-        {nombre:"CANVAS",    precio:.25},
-        {nombre:"PVC",       precio:.30},
-        {nombre:"ADESIVOS",  precio:.35}
+        {nombre:"Papel Bond",      precio: 0.018},
+        {nombre:"Papel Periódico",      precio: 0.018},
+        {nombre:"Papel Químico",      precio: 0.018},
+        {nombre:"Papel Couche brillo",      precio: 0.018},
+        {nombre:"Papel Couche matte",      precio: 0.018},
+        {nombre:"Papel Adhesivo",      precio: 0.018},
+        {nombre:"Kimberly Colores",      precio: 0.018},
+        {nombre:"Cartulina Bristol",      precio: 0.018},
+        {nombre:"Cartulina Marfil Lisa",      precio: 0.018},
+        {nombre:"Cartulina Cartulina Hilo",      precio: 0.018},
+        {nombre:"Cartulina Plegable",      precio: 0.018},
+        {nombre:"Cartulina Nacarada",      precio: 0.018},
+        {nombre:"Cartulina Fina",      precio: 0.018},
+        {nombre:"Pergamino Especial",      precio: 0.018},
+    ],
+    gramaje = [
+        {nombre:"48 Periódico",             precio: 00},
+        {nombre:"55 Químico",               precio: 00},
+        {nombre:"75 Bond",                  precio: 00},
+        {nombre:"90 Bond",                  precio: 00},
+        {nombre:"120 Bond",                 precio: 00},
+        {nombre:"115 Couche MatteBrilloso", precio: 00},
+        {nombre:"150 Bristol",              precio: 00},
+        {nombre:"200 Couche MatteBrilloso", precio: 00},
+        {nombre:"250 Couche Brilloso",      precio: 00},
+        {nombre:"220 Marfil",               precio: 00},
+        {nombre:"230 Nacaradas",            precio: 00},
+        {nombre:"250 Markatto Opalina",     precio: 00},
+        {nombre:"180 Plegable 0.10",        precio: 00},
+        {nombre:"270 Plegable 0.12",        precio: 00},
+        {nombre:"370 Plegable 0.14",        precio: 00},
     ],
     tama = [
-        {nombre:"A3",   precio:.30},
-        {nombre:"A4",   precio:.30},
-        {nombre:"A5",   precio:.30},
+        {nombre:" A3 ", precio:.30},
+        {nombre:" A4 ", precio:.30},
+        {nombre:" A5 ", precio:.30},
     ];
     artes = [
-        {nombre:"AFICHE",   precio:.30},
-        {nombre:"VOLANTE",  precio:.35},
-        {nombre:"CARNE",    precio:.40},
-        {nombre:"TARJETA",  precio:.45},
-        {nombre:"LIBRO",    precio:.55},
-        {nombre:"FOLLETO",  precio:.55}
+        {nombre:"Afiche",    precio:.30},
+        {nombre:"Tríptico",   precio:.30},
+        {nombre:"Díptico",   precio:.30},
+        {nombre:"Volante",  precio:.35},
+        {nombre:"Carpeta",  precio:.35},
+        {nombre:"Hoja Membretada",    precio:.40},
+        {nombre:"Sobres Pequeños",  precio:.45},
+        {nombre:"Sobres Grandes",  precio:.45},
+        {nombre:"Títulos",  precio:.45},
+        {nombre:"Certificados A5 A4",  precio:.45},
+        {nombre:"Empastado",  precio:.45},
+        {nombre:"Especies Valoradas",  precio:.45},
+        {nombre:"Tarjetas Personales",  precio:.45},
+        {nombre:"Rifas",  precio:.45},
+        {nombre:"Cuaderno Correspondencia",  precio:.45},
+        // {nombre:"LIBRO",    precio:.55},
+        // {nombre:"FOLLETO",  precio:.55}
     ];
 
     //Load selectors
     var $equiposSelects = $("select#equipo");
+    var $colorSelects=$("select#color");
+    var $tiroRetiroSelects=$("select#tiroRetiro");
+    var $tamaSelects=$("select#tama");
+    var $gramajeSelects=$("select#gramaje");
+
     var $sustratoSelects = $("select#sustrato");
     var $arteSelects = $("select#arte");
     var $ivaSelects = $("select#iva");
 
     fillOptions($equiposSelects, equipos);
+    fillOptions($colorSelects, color);
+    fillOptions($tiroRetiroSelects, tiroRetiro);
+    fillOptions($tamaSelects, tama);
+    fillOptions($gramajeSelects, gramaje);
+
     fillOptions($sustratoSelects, sustratos);
     fillOptions($arteSelects, artes);
 
@@ -128,7 +182,7 @@ $(document).ready(function() {
         $this.addClass('select-hidden');
         $this.wrap('<div class="select"></div>');
         $this.after('<div class="select-styled"></div>');
-        $this.parent().append('<label class="label-values" for="value">00.00</label>');
+        // $this.parent().append('<label class="label-values" for="value">00.00</label>');
 
         var $styledSelect = $this.next('div.select-styled');
         $styledSelect.text($this.children('option').eq(0).text());
@@ -174,6 +228,15 @@ $(document).ready(function() {
             //set label values
             var precio = $(this).attr('rel');
             $this.siblings('label').text(precio);
+
+            // cuando se escoje equipo
+            if ($(this).parent().attr('id') == "equipo" && $(this).text() == "Offset") {
+                $("#input-Matrices").hide();
+                $("#input-Placas").show();
+            }else {
+                $("#input-Placas").hide();
+                $("#input-Matrices").show();
+            }
 
             // cuando es LIBRO o FOLLETO
             if ($(this).parent().attr('id') == "arte" && $(this).text() == "LIBRO" || $(this).text() == "FOLLETO" ) {

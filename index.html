@@ -32,33 +32,80 @@
         </nav>
     </div>
     <section class="content" id="home-content">
-        <h2 id="eq">EQUIPO</h2>
-        <select id="equipo" name="">
-            <option value="hide">-- Select --</option>
-        </select>
+        <div class="flex-container">
+            <!-- Column Left -->
+            <div class="flex-item">
+                <h2 id="eq">EQUIPO</h2>
+                <select id="equipo" name="">
+                    <option value="hide">-- Select --</option>
+                </select>
 
-        <h2>SUSTRATO</h2>
-        <select id="sustrato">
-            <option value="hide">-- Select --</option>
-        </select>
+                <h2>SUSTRATO</h2>
+                <select id="sustrato">
+                    <option value="hide">-- Select --</option>
+                </select>
 
-        <!-- CANTIDAD -->
-        <div class="input-grup" id="input-cantidad">
-            <label for="cantidad" class="label-input">CANTIDAD</label>
-            <input id="cantidad" class="input-value" type="number" name="cantidad" value="1" min="1" step="1">
-        </div>
+                <!-- CANTIDAD -->
+                <div class="input-grup" id="input-cantidad">
+                    <label for="cantidad" class="label-input">CANTIDAD</label>
+                    <input id="cantidad" class="input-value" type="number" name="cantidad" value="1" min="1" step="1">
+                </div>
 
-        <h2>TAMAÑO</h2>
-        <select id="arte">
-            <option value="hide">-- Select --</option>
-        </select>
+                <h2>ARTE</h2>
+                <select id="arte">
+                    <option value="hide">-- Select --</option>
+                </select>
 
-        <h2>ARTE</h2>
-        <select id="arte">
-            <option value="hide">-- Select --</option>
-        </select>
+                <div class="input-grup" id="input-nPages" style="display:none">
+                </div>
+            </div>
+            <!-- Colum Right -->
+            <div class="flex-item">
+                <div class="flex-container equipoTarget">
+                    <div class="flex-item">
+                        <h2>COLOR</h2>
+                        <select id="color">
+                            <option value="hide">-- Select --</option>
+                        </select>
 
-        <div class="input-grup" id="input-nPages" style="display:none">
+                        <h2>GRAMAJE</h2>
+                        <select id="gramaje">
+                            <option value="hide">-- Select --</option>
+                        </select>
+
+                        <!-- COSTO UNITARIO -->
+                        <div class="input-grup" id="costoUnitario">
+                            <label class="label-input" for="costoUnitario">Costo Unitario</label>
+                            <label class="label-values" for="value">00.00</label>
+                        </div>
+                    </div>
+                    <div class="flex-item">
+                        <h2>TAMAÑO</h2>
+                        <select id="tama">
+                            <option value="hide">-- Select --</option>
+                        </select>
+
+                        <h2>CARAS A IMPRIMIR</h2>
+                        <select id="tiroRetiro">
+                            <option value="hide">-- Select --</option>
+                        </select>
+
+                        <!-- MATRICES -->
+                        <div class="input-grup" id="input-Matrices" style="display:none">
+                            <label for="matrices" class="label-input">MATRICES</label>
+                            <input id="matrices" class="input-value" type="number" name="matrices" value="1" min="1" step="1">
+                        </div>
+                        <!-- PLACAS -->
+                        <div class="input-grup" id="input-Placas" style="display:none">
+                            <label for="placas" class="label-input">PLACAS</label>
+                            <input id="placas" class="input-value" type="number" name="placas" value="1" min="1" step="1">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Colum Right -->
+
         </div>
 
         <h2>IVA</h2>

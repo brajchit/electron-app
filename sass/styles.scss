@@ -105,6 +105,7 @@ p {
     left: 0;
     z-index: 999;
     margin: 0;
+    margin-bottom: $body-margin;
     padding: 0;
     list-style: none;
     background-color: darken($select-background, 5);
@@ -131,7 +132,8 @@ p {
 }
 
 .input-value{
-    width: $select-width/2.5;
+    width: $select-width/2;
+    // width: 40%;
     height: $select-height;
     display: inline-block;
     color: $select-color;
@@ -144,15 +146,15 @@ p {
 }
 .label-input{
     display: inline-block;
-    width: $select-width - ($select-width/2.5);
+    width: ( $select-width - ($select-width/2) ) - 1px;
+    // width: 50%;
 }
 
 .label-values{
     background: $select-background;
-    width: $select-width/2.5;
+    width: ($select-width/2) - 5px;
     height: $select-height;
     display: inline-block;
-    position: absolute;
     left: 250px;
     padding: 8px 15px;
     text-align: right;
@@ -192,7 +194,7 @@ p {
 .content{
     padding: 0;
     padding-top: 3em;
-    padding-left: 16%;
+    padding-left: 5%;
 }
 
 .menu{
@@ -226,6 +228,8 @@ p {
     display: flex;
     width: $select-width*2;
     height: auto;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
     // background-color: #3d82e9;
 }
 .flex-container-in {
@@ -245,4 +249,14 @@ p {
     // background-color: #a19822;
     width: $select-width/1.5;
     margin: auto;
+}
+
+.equipoTarget{
+    .flex-item{
+        margin-left: 30px;
+        // border: 1px solid red;
+    }
+    // .select-styled{
+    //     right: 45%;
+    // }
 }
